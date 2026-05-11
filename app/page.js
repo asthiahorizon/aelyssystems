@@ -706,10 +706,10 @@ function CTAContact() {
                 { icon: MapPin, label: 'Suisse romande · à distance ou sur site' },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-3 text-white/75">
-                  <div className="h-9 w-9 rounded-lg bg-white/[0.05] border border-white/10 grid place-items-center">
+                  <div className="h-9 w-9 rounded-lg bg-white/[0.05] border border-white/10 grid place-items-center shrink-0">
                     <Icon className="h-4 w-4 text-aelys-sky" />
                   </div>
-                  <span className="text-[14.5px]">{label}</span>
+                  <span className="text-[14.5px]" suppressHydrationWarning>{label}</span>
                 </div>
               ))}
             </div>
@@ -815,13 +815,16 @@ function Footer() {
             <div className="text-[11px] uppercase tracking-[0.22em] text-aelys-sky font-medium">Contact</div>
             <ul className="mt-5 space-y-3 text-[14.5px]">
               <li className="flex items-center gap-2.5 text-white/70">
-                <MapPin className="h-4 w-4 text-aelys-sky" /> Suisse romande
+                <MapPin className="h-4 w-4 text-aelys-sky shrink-0" />
+                <span suppressHydrationWarning>Suisse romande</span>
               </li>
               <li className="flex items-center gap-2.5 text-white/70">
-                <Mail className="h-4 w-4 text-aelys-sky" /> info@aelyssystems.ch
+                <Mail className="h-4 w-4 text-aelys-sky shrink-0" />
+                <a href="mailto:info@aelyssystems.ch" className="hover:text-white transition-colors" suppressHydrationWarning>info@aelyssystems.ch</a>
               </li>
               <li className="flex items-center gap-2.5 text-white/70">
-                <Linkedin className="h-4 w-4 text-aelys-sky" /> Aelys Systems
+                <Linkedin className="h-4 w-4 text-aelys-sky shrink-0" />
+                <span suppressHydrationWarning>Aelys Systems</span>
               </li>
             </ul>
           </div>
