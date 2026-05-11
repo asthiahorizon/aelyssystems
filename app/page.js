@@ -525,10 +525,6 @@ function Services() {
                 {title}
               </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{desc}</p>
-              <div className="mt-6 flex items-center text-[13px] font-medium text-aelys-royal">
-                <span>En savoir plus</span>
-                <ArrowUpRight className="h-4 w-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </div>
             </Card>
           ))}
         </div>
@@ -694,7 +690,7 @@ function CTAContact() {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <div className="lg:col-span-6 reveal">
             <Badge className="bg-white/[0.06] text-aelys-sky border border-white/10 rounded-full px-3.5 py-1.5">
-              Premier échange · gratuit · sans engagement
+              Premier échange · sans engagement
             </Badge>
             <h2 className="mt-6 text-3xl md:text-[44px] leading-[1.1] font-semibold tracking-tight text-white">
               Et si vos processus devenaient plus <span className="text-gradient-blue">simples, plus clairs et plus intelligents</span> ?
@@ -706,9 +702,8 @@ function CTAContact() {
 
             <div className="mt-10 space-y-4">
               {[
-                { icon: Phone, label: 'Échange visio de 30 minutes' },
+                { icon: Phone, label: 'Échange téléphone ou visio' },
                 { icon: MapPin, label: 'Suisse romande · à distance ou sur site' },
-                { icon: CheckCircle2, label: 'Première analyse offerte' },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-3 text-white/75">
                   <div className="h-9 w-9 rounded-lg bg-white/[0.05] border border-white/10 grid place-items-center">
@@ -823,7 +818,7 @@ function Footer() {
                 <MapPin className="h-4 w-4 text-aelys-sky" /> Suisse romande
               </li>
               <li className="flex items-center gap-2.5 text-white/70">
-                <Mail className="h-4 w-4 text-aelys-sky" /> hello@aelys-systems.ch
+                <Mail className="h-4 w-4 text-aelys-sky" /> info@aelyssystems.ch
               </li>
               <li className="flex items-center gap-2.5 text-white/70">
                 <Linkedin className="h-4 w-4 text-aelys-sky" /> Aelys Systems
@@ -848,7 +843,6 @@ function App() {
     <main className="min-h-screen bg-aelys-night text-white selection:bg-aelys-royal/40 selection:text-white">
       <Header />
       <Hero />
-      <TrustStrip />
       <Problematique />
       <Expertise />
       <Services />

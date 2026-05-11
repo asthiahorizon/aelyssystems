@@ -101,3 +101,61 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Site web Aelys Systems (PME suisses). Configurer SMTP Infomaniak pour envoi des demandes de contact, et adapter UI."
+
+backend:
+  - task: "Contact form API with Infomaniak SMTP + Mongo storage"
+    implemented: true
+    working: "NA"
+    file: "app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "POST /api/contact: stores in MongoDB collection contact_requests AND sends email via Infomaniak SMTP (mail.infomaniak.com:465 SSL). Uses SMTP_USER=info@aelyssystems.ch. Required: name/email/message. Optional: company/phone. Returns 400 if required missing, 502 if SMTP fails, 200 with {ok:true,saved:boolean} on success. Also GET /api/health returns {status:'ok'}."
+
+  - task: "Health endpoint"
+    implemented: true
+    working: "NA"
+    file: "app/api/[[...path]]/route.js"
+    stuck_count: 0
+    priority: "low"
+    needs_retesting: true
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "GET /api/health returns 200 with {status:'ok', service:'aelys-systems-api'}"
+
+frontend:
+  - task: "Aelys Systems landing page (Hero, Expertise x3, Services, Méthode, Cas d'usage, Contact, Footer)"
+    implemented: true
+    working: "NA"
+    file: "app/page.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: "NA"
+          agent: "main"
+          comment: "Premium landing page in French with deep navy palette. 3 expertises (BA, IA, Dev), 6 services, 5-step method, 8 use cases, contact form. Trust strip & 'En savoir plus' & 'Première analyse offerte' removed per user request. Form posts to /api/contact."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.1"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Contact form API with Infomaniak SMTP + Mongo storage"
+    - "Health endpoint"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "main"
+      message: "Please test the contact API: 1) GET /api/health should return 200 with status ok. 2) POST /api/contact with valid payload (name,email,message + optional company,phone) should return 200 with {ok:true,saved:true}, save document in MongoDB 'contact_requests' collection, and send a real email via Infomaniak SMTP (mail.infomaniak.com:465 SSL, user info@aelyssystems.ch) to info@aelyssystems.ch. 3) POST /api/contact with missing required field should return 400. Test base URL: read NEXT_PUBLIC_BASE_URL from /app/.env and prefix with /api. IMPORTANT: SMTP credentials live in /app/.env (SMTP_HOST, SMTP_PORT=465, SMTP_SECURE=true, SMTP_USER, SMTP_PASS, SMTP_FROM, SMTP_TO). Verify the email is actually transmitted (don't just check the HTTP response — check SMTP transporter completes without throwing). Use realistic French test data."
