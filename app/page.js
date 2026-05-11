@@ -11,7 +11,8 @@ import {
   ArrowRight, ArrowUpRight, Workflow, Database, Eye, GitBranch, Sparkles, LineChart,
   ClipboardList, Map, ListChecks, Rocket, RefreshCw, FileSpreadsheet, Mail, BrainCircuit,
   Bell, BarChart3, Calculator, Users, Cog, ShieldCheck, Layers, Compass, CheckCircle2,
-  Menu, X, Zap, Network, FileText, Bot, MessageSquare, Send, Phone, MapPin, Linkedin
+  Menu, X, Zap, Network, FileText, Bot, MessageSquare, Send, Phone, MapPin, Linkedin,
+  Code2, Smartphone, Monitor, Boxes
 } from 'lucide-react'
 
 /* ---------- Reveal-on-scroll hook ---------- */
@@ -50,6 +51,7 @@ function Header() {
     { label: 'Expertise', href: '#expertise' },
     { label: 'Automatisation IA', href: '#automatisation' },
     { label: 'Business Analyse', href: '#business-analyse' },
+    { label: 'Développement', href: '#developpement' },
     { label: 'Méthode', href: '#methode' },
     { label: 'Contact', href: '#contact' },
   ]
@@ -142,17 +144,17 @@ function Hero() {
           <div className="lg:col-span-7 reveal">
             <Badge className="bg-white/[0.06] hover:bg-white/[0.08] text-aelys-sky border border-white/10 rounded-full px-3.5 py-1.5 font-medium">
               <Sparkles className="h-3.5 w-3.5 mr-1.5" />
-              Automatisation IA · Business Analyse · PME Suisses
+              Automatisation IA · Business Analyse · Développement métier
             </Badge>
 
             <h1 className="mt-6 text-4xl sm:text-5xl lg:text-[64px] leading-[1.05] font-semibold tracking-tight text-white">
-              Automatisation IA et <span className="text-gradient-blue">business analyse</span> pour les PME suisses
+              Automatisation IA, <span className="text-gradient-blue">business analyse</span> et développement métier pour les PME suisses
             </h1>
 
             <p className="mt-6 max-w-2xl text-[17px] md:text-[18px] leading-relaxed text-white/70">
               Aelys Systems aide les petites et moyennes entreprises à clarifier leurs processus,
-              identifier les leviers d’amélioration et automatiser les tâches répétitives grâce à des
-              solutions IA simples, efficaces et adaptées à leur réalité terrain.
+              identifier les leviers d’amélioration, automatiser les tâches répétitives et développer
+              des applications métier sur mesure — web, mobile et desktop — adaptées à leur réalité terrain.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row gap-3.5">
@@ -169,9 +171,9 @@ function Hero() {
 
             <div className="mt-12 grid grid-cols-3 max-w-md gap-6">
               {[
+                { v: '3', l: 'expertises' },
                 { v: '40h+', l: 'gagnées / mois' },
-                { v: '5 étapes', l: 'méthode claire' },
-                { v: '100% PME', l: 'sur-mesure' },
+                { v: '100%', l: 'sur-mesure PME' },
               ].map((s) => (
                 <div key={s.l}>
                   <div className="text-2xl font-semibold text-white">{s.v}</div>
@@ -370,6 +372,14 @@ function Expertise() {
     'Tableaux de suivi et reporting',
     'Optimisation progressive des processus',
   ]
+  const dev = [
+    'Applications web sur mesure',
+    'Applications mobiles (iOS, Android)',
+    'Logiciels desktop métier',
+    'Intégrations API & services tiers',
+    'Interfaces internes et portails clients',
+    'Maintenance et évolutions continues',
+  ]
   return (
     <section id="expertise" className="relative bg-aelys-night py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-50" />
@@ -378,11 +388,12 @@ function Expertise() {
         <SectionTitle
           dark
           eyebrow="Expertise"
-          title="Une double expertise : business analyse et automatisation IA"
+          title="Une triple expertise : business analyse, automatisation IA et développement métier"
+          subtitle="Une vision complète, de l’analyse à la mise en œuvre : comprendre, automatiser et développer les outils dont vos équipes ont vraiment besoin."
         />
 
-        <div id="business-analyse" className="mt-14 grid lg:grid-cols-2 gap-6">
-          <Card className="reveal card-hover relative overflow-hidden bg-white/[0.03] border-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-10 hover:border-aelys-sky/30">
+        <div id="business-analyse" className="mt-14 grid lg:grid-cols-3 gap-6">
+          <Card className="reveal card-hover relative overflow-hidden bg-white/[0.03] border-white/10 backdrop-blur-sm rounded-3xl p-7 md:p-8 hover:border-aelys-sky/30">
             <div className="absolute -top-12 -right-12 h-48 w-48 bg-aelys-royal/15 blur-3xl rounded-full" />
             <div className="flex items-center gap-3 mb-6">
               <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-aelys-royal to-aelys-blue grid place-items-center">
@@ -392,16 +403,16 @@ function Expertise() {
                 Bloc 01
               </Badge>
             </div>
-            <h3 className="text-2xl md:text-[28px] font-semibold text-white">Business Analyse</h3>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/70">
+            <h3 className="text-2xl md:text-[26px] font-semibold text-white">Business Analyse</h3>
+            <p className="mt-4 text-[14.5px] leading-relaxed text-white/70">
               Aelys Systems analyse vos processus métier de manière structurée afin de comprendre comment
               l’information circule, où se trouvent les blocages et quelles améliorations peuvent générer
               un impact concret. L’objectif est de transformer un fonctionnement parfois informel en une
               vision claire, documentée et optimisable.
             </p>
-            <ul className="mt-7 grid sm:grid-cols-2 gap-x-6 gap-y-3">
+            <ul className="mt-6 space-y-2.5">
               {ba.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-[14px] text-white/80">
+                <li key={p} className="flex items-start gap-2.5 text-[13.5px] text-white/80">
                   <CheckCircle2 className="h-4 w-4 text-aelys-sky mt-0.5 shrink-0" />
                   {p}
                 </li>
@@ -409,7 +420,7 @@ function Expertise() {
             </ul>
           </Card>
 
-          <Card id="automatisation" className="reveal card-hover relative overflow-hidden bg-white/[0.03] border-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-10 hover:border-aelys-sky/30">
+          <Card id="automatisation" className="reveal card-hover relative overflow-hidden bg-white/[0.03] border-white/10 backdrop-blur-sm rounded-3xl p-7 md:p-8 hover:border-aelys-sky/30">
             <div className="absolute -top-12 -left-12 h-48 w-48 bg-aelys-electric/20 blur-3xl rounded-full" />
             <div className="flex items-center gap-3 mb-6">
               <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-aelys-electric to-aelys-royal grid place-items-center">
@@ -419,16 +430,54 @@ function Expertise() {
                 Bloc 02
               </Badge>
             </div>
-            <h3 className="text-2xl md:text-[28px] font-semibold text-white">Automatisation IA</h3>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/70">
+            <h3 className="text-2xl md:text-[26px] font-semibold text-white">Automatisation IA</h3>
+            <p className="mt-4 text-[14.5px] leading-relaxed text-white/70">
               Aelys Systems conçoit des automatisations adaptées aux besoins des PME : traitement de
               données, génération de documents, synchronisation d’outils, notifications intelligentes,
               assistants IA internes ou workflows automatisés. L’objectif n’est pas d’ajouter de la
               technologie pour la technologie, mais de libérer du temps et de fiabiliser les opérations.
             </p>
-            <ul className="mt-7 grid sm:grid-cols-2 gap-x-6 gap-y-3">
+            <ul className="mt-6 space-y-2.5">
               {ia.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-[14px] text-white/80">
+                <li key={p} className="flex items-start gap-2.5 text-[13.5px] text-white/80">
+                  <CheckCircle2 className="h-4 w-4 text-aelys-sky mt-0.5 shrink-0" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </Card>
+
+          <Card id="developpement" className="reveal card-hover relative overflow-hidden bg-white/[0.03] border-white/10 backdrop-blur-sm rounded-3xl p-7 md:p-8 hover:border-aelys-sky/30">
+            <div className="absolute -top-12 -right-12 h-48 w-48 bg-aelys-sky/20 blur-3xl rounded-full" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-aelys-blue to-aelys-sky grid place-items-center">
+                <Code2 className="h-5 w-5 text-white" />
+              </div>
+              <Badge className="bg-white/5 text-aelys-sky border border-white/10 rounded-full text-[10px] uppercase tracking-widest">
+                Bloc 03
+              </Badge>
+            </div>
+            <h3 className="text-2xl md:text-[26px] font-semibold text-white">Développement métier</h3>
+            <p className="mt-4 text-[14.5px] leading-relaxed text-white/70">
+              Aelys Systems conçoit et développe des applications sur mesure — web, mobile et desktop —
+              pour répondre précisément aux besoins de vos équipes. Quand les outils du marché ne suffisent
+              plus, nous créons des solutions robustes, évolutives et parfaitement intégrées à vos
+              processus.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[11px] text-white/70">
+                <Monitor className="h-3 w-3 text-aelys-sky" /> Web
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[11px] text-white/70">
+                <Smartphone className="h-3 w-3 text-aelys-sky" /> Mobile
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-[11px] text-white/70">
+                <Boxes className="h-3 w-3 text-aelys-sky" /> Desktop
+              </span>
+            </div>
+            <ul className="mt-6 space-y-2.5">
+              {dev.map((p) => (
+                <li key={p} className="flex items-start gap-2.5 text-[13.5px] text-white/80">
                   <CheckCircle2 className="h-4 w-4 text-aelys-sky mt-0.5 shrink-0" />
                   {p}
                 </li>
@@ -448,6 +497,8 @@ function Services() {
     { icon: Cog, title: 'Optimisation opérationnelle', desc: 'Simplifier les étapes inutiles, réduire les doublons et structurer des processus plus efficaces.' },
     { icon: Workflow, title: 'Automatisation des workflows', desc: 'Automatiser les tâches répétitives entre vos outils : formulaires, CRM, emails, documents, bases de données ou plateformes métier.' },
     { icon: BrainCircuit, title: 'Intégration IA pour PME', desc: 'Mettre en place des assistants IA, des systèmes de génération de contenu, d’analyse de données ou d’aide à la décision.' },
+    { icon: Code2, title: 'Développement d’applications métier', desc: 'Concevoir et développer des applications web, mobiles et desktop sur mesure, parfaitement alignées avec vos processus et vos équipes.' },
+    { icon: Network, title: 'Intégrations & connecteurs', desc: 'Connecter vos outils existants (CRM, ERP, comptabilité, e-commerce…) via des API et des connecteurs robustes.' },
   ]
   return (
     <section className="relative bg-aelys-mist py-24 md:py-32">
@@ -456,7 +507,7 @@ function Services() {
         <SectionTitle
           eyebrow="Services"
           title="Des solutions concrètes pour simplifier votre quotidien"
-          subtitle="Quatre leviers pour structurer, fluidifier et automatiser intelligemment votre organisation — sans sur-ingénierie."
+          subtitle="Six leviers concrets pour structurer, fluidifier, automatiser et développer intelligemment votre organisation — sans sur-ingénierie."
         />
 
         <div className="mt-14 grid md:grid-cols-2 gap-6">
@@ -748,8 +799,9 @@ function Footer() {
               <div className="text-white font-semibold tracking-tight text-[17px]">Aelys Systems</div>
             </div>
             <p className="mt-5 text-[14.5px] leading-relaxed text-white/55 max-w-md">
-              Automatisation IA & Business Analyse pour PME suisses. Nous transformons vos processus métier
-              en systèmes clairs, automatisés et intelligents.
+              Automatisation IA, Business Analyse & Développement métier pour PME suisses. Nous transformons vos
+              processus métier en systèmes clairs, automatisés et intelligents, et développons les
+              applications dont vos équipes ont vraiment besoin.
             </p>
           </div>
 
@@ -758,6 +810,7 @@ function Footer() {
             <ul className="mt-5 space-y-3 text-[14.5px]">
               <li><a href="#accueil" className="text-white/70 hover:text-white">Accueil</a></li>
               <li><a href="#expertise" className="text-white/70 hover:text-white">Expertise</a></li>
+              <li><a href="#developpement" className="text-white/70 hover:text-white">Développement</a></li>
               <li><a href="#methode" className="text-white/70 hover:text-white">Méthode</a></li>
               <li><a href="#contact" className="text-white/70 hover:text-white">Contact</a></li>
             </ul>
