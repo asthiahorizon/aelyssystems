@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -143,7 +144,22 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdServices) }}
         />
       </head>
-      <body className="font-sans antialiased bg-[#0A1633] text-white">{children}</body>
+      <body className="font-sans antialiased bg-[#0A1633] text-white">
+        {children}
+        {/* Google tag (gtag.js) — Google Ads AW-18155367954 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18155367954"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18155367954');
+          `}
+        </Script>
+      </body>
     </html>
   )
 }
